@@ -2,14 +2,13 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Shop</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;500&display=swap');
 
-        root {
+        :root {
            --tg-theme-text-color: #FFFFFF;
            --tg-theme-bg-color: #000000;
            --tg-theme-button-color: #FF0000; /* Цвет текста для кнопок */
@@ -86,8 +85,7 @@
     </style>
 </head>
 <body>
-
-     <div id="main">
+    <div id="main">
          <h1>Онлайн магазин</h1>
          <img src="https://bipbap.ru/wp-content/uploads/2018/06/3c980dd2e9c909ada7377cc89885231b.jpg">
          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ipsum magni, molestias.</p>
@@ -109,35 +107,34 @@
 
          buy.addEventListener("click", () => {
              document.getElementById("main").style.display = "none";
-             document.getElementById("form").style.display = "block";
+             document.getElementById("form").style display = "block";
              document.getElementById("user_name").value = tg.InitDataUnsafe.user.first_name + " " + tg.InitDataUnsafe.user.last_name;
          });
 
          order.addEventListener("click", () => {
              document.getElementById("error").innerText = '';
              let name = document.getElementById("user_name").value;
-             let email = document.getElementById("email").value;
-             let phone = document.getElementById("phone").value;
-             if(name.length <5) {
+             let email = document.getElementById("user_email").value;
+             let phone = document.getElementById("user_phone").value;
+             if (name.length < 5) {
                  document.getElementById("error").innerText = 'Ошибка в имени';
                  return;
              }
-             if(email.length <5) {
+             if (email.length < 5) {
                  document.getElementById("error").innerText = 'Ошибка в email';
                  return;
              }
-             if(phone.length <5) {
+             if (phone.length < 5) {
                  document.getElementById("error").innerText = 'Ошибка в номере телефона';
                  return;
              }
 
              let data = {
-             name: name,
-             email: email,
-             phone: phone
+                 name: name,
+                 email: email,
+                 phone: phone
              }
              tg.sendData(JSON.stringify(data));
-
 
              tg.close();
          });
